@@ -6,13 +6,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/recipes' },
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   { path: 'recipes', component: RecipeComponent },
   { path: 'shopping-list', component: ShoppingListComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot.apply(appRoutes)]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 
