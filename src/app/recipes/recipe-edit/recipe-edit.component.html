@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <form action="">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
           <button class="btn btn-success">Save</button>
@@ -13,7 +13,8 @@
             <label for="name">Name</label>
             <input type="text"
                     id="name"
-                    class="form-control">
+                    class="form-control"
+                    formControlName="name">
           </div>
         </div>
       </div>
@@ -23,20 +24,11 @@
             <label for="imagePath">Image URL</label>
             <input type="text"
                     id="imagePath"
-                    class="form-control">
+                    class="form-control"
+                    formControlName="imagePath">
           </div>
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="imagePath">Image URL</label>
-            <input type="text"
-                    id="imagePath"
-                    class="form-control">
-          </div>
-        </div>
-      </div> -->
       <div class="row">
         <div class="col-xs-12">
           <img src="" alt="" class="img-responsive">
@@ -48,20 +40,25 @@
             <label for="description">Description</label>
             <textarea id="description"
                       type="text"
-                      class="form-control"></textarea>
+                      class="form-control"
+                      formControlName="description"></textarea>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" formArrayName="ingredients">
         <div class="col-xs-12">
-          <div class="row">
+          <div class="row"
+                *ngFor="let recipeCtrl of recipeForm.get('ingredients').controls; let i = index"
+                [formGroupName]="i">
             <div class="col-xs-8">
               <input type="text"
-                      class="form-control">
+                      class="form-control"
+                      formControlName="name">
             </div>
             <div class="col-xs-2">
               <input type="number" 
-                    class="form-control">
+                    class="form-control"
+                    formControlName="amount">
             </div>
             <div class="col-xs-2">
               <button class="btn btn-danger">X</button>
