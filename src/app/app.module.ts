@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { ServerService } from './servers/server.service';
 import { RecipeService } from './recipes/recipe.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { SighupComponent } from './auth/sighup/sighup.component';
-import { SigninComponent } from './signin/signin.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { SigninComponent } from './signin/signin.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [ShoppingListService, RecipeService, ServerService],
+  providers: [ShoppingListService, RecipeService, ServerService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
