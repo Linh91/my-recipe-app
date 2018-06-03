@@ -20,6 +20,8 @@ import { RecipeComponent } from './recipes/recipes.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { SighupComponent } from './auth/sighup/sighup.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RecipeComponent,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SighupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
