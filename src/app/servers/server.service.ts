@@ -19,9 +19,19 @@ export class ServerService {
 
   getRecipeServer() {
     return this.http.get('https://my-recipe-app-6e513.firebaseio.com/recipes.json')
-    .subscribe(
+    .pipe(map(
       (response: Response) => {
         const recipes: Recipe[] = response.json();
+        for (let recipe of recipes) {
+          if (recipe['ingredients']) {
+            recipe['ingredients'] = [];
+          }
+        }
+        return recipes;
+      }
+    ))
+    .subscribe(
+      (recipes: Recipe[]) => {
         this.recipeServe.setRecipe(recipes);
       }
     );
