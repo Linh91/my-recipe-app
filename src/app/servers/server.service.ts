@@ -1,3 +1,4 @@
+import { Recipe } from './../recipes/recipe.model';
 import { RecipeService } from './../recipes/recipe.service';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
@@ -18,11 +19,11 @@ export class ServerService {
 
   getRecipeServer() {
     return this.http.get('https://my-recipe-app-6e513.firebaseio.com/recipes.json')
-    .pipe(map(
+    .subscribe(
       (response: Response) => {
-        const data = response.json();
-        return data;
+        const recipes: Recipe[] = response.json();
+        this.recipeServe.setRecipe(recipes);
       }
-    ));
+    );
   }
 }

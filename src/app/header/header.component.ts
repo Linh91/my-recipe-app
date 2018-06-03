@@ -18,4 +18,8 @@ export class HeaderComponent {
       }
     );
   }
+
+  onFetch() {
+    this.serverService.getRecipeServer();
+  }
 }
