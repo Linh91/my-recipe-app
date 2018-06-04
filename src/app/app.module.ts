@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth/auth-guard.service';
@@ -14,15 +15,11 @@ import { RecipeModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServerService } from './servers/server.service';
-import { SighupComponent } from './auth/sighup/sighup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SighupComponent,
-    SigninComponent
+    HeaderComponent
   ],
   imports: [
     AppRoutingModule,
@@ -30,7 +27,8 @@ import { SigninComponent } from './auth/signin/signin.component';
     HttpModule,
     RecipeModule,
     SharedModule,
-    ShoppingListModule
+    ShoppingListModule,
+    AuthModule
   ],
   providers: [ShoppingListService,
               RecipeService,

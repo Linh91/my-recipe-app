@@ -9,9 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'shopping-list', component: ShoppingListComponent },
-  { path: 'signup', component: SighupComponent },
-  { path: 'signin', component: SigninComponent }
+  { path: 'shopping-list', component: ShoppingListComponent }
 ];
 
 @NgModule({
