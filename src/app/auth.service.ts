@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import 'firebase/auth';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
-  token = '';
+  token: string;
 
   constructor() { }
 
@@ -32,6 +30,11 @@ export class AuthService {
     );
   }
 
+  logout() {
+    firebase.auth().signOut();
+    this.token = null;
+  }
+
   getToken() {
     firebase.auth().currentUser.getIdToken()
     .then(
@@ -40,4 +43,7 @@ export class AuthService {
     return this.token;
   }
 
+  isAuthenticated() {
+    return this.token != null;
+  }
 }

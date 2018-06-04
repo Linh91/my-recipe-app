@@ -12,9 +12,14 @@ import { map } from 'rxjs/operators';
 })
 export class ServerService {
 
-  constructor(private http: Http, private recipeServe: RecipeService, private authService: AuthService) { }
+  constructor(private http: Http,
+              private recipeServe: RecipeService,
+              private authService: AuthService) { }
+
   recipeServers() {
-    return this.http.put('https://my-recipe-app-6e513.firebaseio.com/recipes.json',
+    const token = this.authService.getToken();
+
+    return this.http.put('https://my-recipe-app-6e513.firebaseio.com/recipes.json?auth=' + token,
                     this.recipeServe.getRecipes());
   }
 
@@ -26,7 +31,7 @@ export class ServerService {
       (response: Response) => {
         const recipes: Recipe[] = response.json();
         for (let recipe of recipes) {
-          if (recipe['ingredients']) {
+          if (!recipe['ingredients']) {
             recipe['ingredients'] = [];
           }
         }
