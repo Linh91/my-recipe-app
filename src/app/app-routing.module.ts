@@ -10,7 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipeModule'}
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipeModule'},
   { path: 'shopping-list', component: ShoppingListComponent }
 ];
 

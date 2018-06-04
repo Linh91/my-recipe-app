@@ -1,8 +1,8 @@
-import { AuthGuard } from './../auth/auth-guard.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './../auth/auth-guard.service';
 import { RecipeComponent } from './recipes.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
@@ -21,6 +21,7 @@ const recipesRoutes: Routes = [
   imports: [
     RouterModule.forChild(recipesRoutes)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class RecipesRoutingModule { }
