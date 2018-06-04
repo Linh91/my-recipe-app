@@ -1,4 +1,4 @@
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './core/home/home.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SighupComponent } from './auth/sighup/sighup.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
