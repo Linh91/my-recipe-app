@@ -1,5 +1,6 @@
 import { AuthService } from './../../auth.service';
 import { ServerService } from './../../servers/server.service';
+
 import { Component } from '@angular/core';
 import { Response } from '@angular/http';
 
@@ -26,5 +27,9 @@ export class HeaderComponent {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 }
