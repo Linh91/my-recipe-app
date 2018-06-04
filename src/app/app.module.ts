@@ -11,21 +11,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { RecipeService } from './recipes/recipe.service';
-import { RecipeModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServerService } from './servers/server.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     HttpModule,
-    RecipeModule,
     SharedModule,
     ShoppingListModule,
     AuthModule
