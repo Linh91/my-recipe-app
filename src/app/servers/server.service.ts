@@ -2,7 +2,7 @@ import { AuthService } from './../auth.service';
 import { Recipe } from './../recipes/recipe.model';
 import { RecipeService } from './../recipes/recipe.service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 // tslint:disable-next-line:import-blacklist
 // import 'rxjs/Rx';
 import { map } from 'rxjs/operators';
@@ -13,14 +13,19 @@ import { map } from 'rxjs/operators';
 export class ServerService {
 
   constructor(private httpClient: HttpClient,
-              private recipeServe: RecipeService,
+              private recipeService: RecipeService,
               private authService: AuthService) { }
 
   recipeServers() {
     const token = this.authService.getToken();
 
-    return this.httpClient.put('https://my-recipe-app-6e513.firebaseio.com/recipes.json?auth=' + token,
-                    this.recipeServe.getRecipes());
+    // return this.httpClient.put('https://my-recipe-app-6e513.firebaseio.com/recipes.json?', this.recipeServe.getRecipes(), {
+    //   observe: 'events',
+    //   params: new HttpParams().set('auth', token)
+    // });
+    const req = new HttpRequest('PUT', 'https://my-recipe-app-6e513.firebaseio.com/recipes.json',
+    this.recipeService.getRecipes(), {reportProgress: true});
+    return this.httpClient.request(req);
   }
 
   getRecipeServer() {
@@ -29,7 +34,7 @@ export class ServerService {
     this.httpClient.get<Recipe[]>('https://my-recipe-app-6e513.firebaseio.com/recipes.json?auth=' + token)
     .pipe(map(
       (recipes) => {
-        for (const recipe of recipes) {
+        for (let recipe of recipes) {
           if (!recipe['ingredients']) {
             recipe['ingredients'] = [];
           }
@@ -39,7 +44,7 @@ export class ServerService {
     ))
     .subscribe(
       (recipes: Recipe[]) => {
-        this.recipeServe.setRecipe(recipes);
+        this.recipeService.setRecipe(recipes);
       }
     );
   }

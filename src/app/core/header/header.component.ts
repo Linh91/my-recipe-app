@@ -2,7 +2,7 @@ import { AuthService } from './../../auth.service';
 import { ServerService } from './../../servers/server.service';
 
 import { Component } from '@angular/core';
-import { Response } from '@angular/http';
+// import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent {
   onSave() {
     this.serverService.recipeServers()
     .subscribe(
-      (response: Response) => {
+      (response) => {
         console.log(response);
       }
     );
