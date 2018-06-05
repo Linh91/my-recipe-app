@@ -3,7 +3,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -17,7 +17,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule,
     ShoppingListModule,
     AuthModule,
