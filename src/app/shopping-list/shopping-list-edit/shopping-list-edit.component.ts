@@ -1,11 +1,13 @@
-import { AddIngredient, DeleteIngredient, UpdateIngredient } from './../store/shopping-list.action';
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Ingredient } from './../../shared/ingredient.model';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+
+import { AddIngredient, DeleteIngredient, UpdateIngredient } from './../store/shopping-list.action';
 import { ShoppingListService } from './../shopping-list.service';
 import * as ShoppingListActions from '../store/shopping-list.action';
+import * as fromShoppingList from '../store/shopping-list.reducers';
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -20,7 +22,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   editedItem: Ingredient;
 
   constructor(private shoppinglistService: ShoppingListService,
-              private store: Store<{ingredients: Ingredient[]}>) { }
+              private store: Store<fromShoppingList.AppState>) { }
 
   ngOnInit() {
     this.subscription = this.shoppinglistService.statedEditing
