@@ -1,4 +1,4 @@
-import { AddIngredient } from './../store/shopping-list.action';
+import { AddIngredient, DeleteIngredient, UpdateIngredient } from './../store/shopping-list.action';
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Ingredient } from './../../shared/ingredient.model';
 import { NgForm } from '@angular/forms';
@@ -41,7 +41,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
     const value = form.value;
       const newIngredient = new Ingredient(value.name, value.amount);
       if (this.editMode) {
-        this.shoppinglistService.updateIngredient(this.editedItemIndex, newIngredient);
+        this.store.dispatch(new ShoppingListActions.UpdateIngredient({index: this.editedItem, ingredient: newIngredient}));
         console.log('new ing', newIngredient);
       } else {
         this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));
@@ -60,7 +60,7 @@ export class ShoppingListEditComponent implements OnInit, OnDestroy {
   }
 
   onDeletItem() {
-    this.shoppinglistService.removeIngredient(this.editedItemIndex);
+    this.store.dispatch(new ShoppingListActions.DeleteIngredient(this.editedItemIndex));
     this.onClear();
   }
 
