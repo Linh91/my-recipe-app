@@ -9,7 +9,6 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducers';
 

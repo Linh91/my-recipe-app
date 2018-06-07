@@ -8,7 +8,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RecipeService } from './../recipes/recipe.service';
 import { SharedModule } from './../shared/shared.module';
-import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { ServerService } from './../servers/server.service';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { ServerService } from './../servers/server.service';
     HeaderComponent
   ],
   providers: [
-    ShoppingListService,
     RecipeService,
     ServerService,
     AuthService,
