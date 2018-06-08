@@ -6,7 +6,6 @@ import { AddIngredients } from './../../shopping-list/store/shopping-list.action
 import { Recipe } from './../recipe.model';
 import { RecipeService } from './../recipe.service';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.action';
-import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
 import * as fromApp from '../../store/app.reducers';
 
 @Component({
