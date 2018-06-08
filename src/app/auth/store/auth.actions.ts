@@ -21,7 +21,7 @@ export class SetToken implements Action {
     readonly type = SET_TOKEN;
 }
 
-export type AuthAction = Signup |
+export type AuthActions = Signup |
                         Signin |
                         Logout |
                         SetToken;
