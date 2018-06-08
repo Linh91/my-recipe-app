@@ -4,10 +4,6 @@ import { Ingredient } from './../../shared/ingredient.model';
 
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 
-export interface AppState {
-    shoppingList: State;
-}
-
 export interface State {
     ingredients: Ingredient[];
     editedIngredient: Ingredient;
