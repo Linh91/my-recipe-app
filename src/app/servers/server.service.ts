@@ -1,4 +1,3 @@
-import { AuthService } from '../auth/auth.service';
 import { Recipe } from './../recipes/recipe.model';
 import { RecipeService } from './../recipes/recipe.service';
 import { Injectable } from '@angular/core';
@@ -13,11 +12,9 @@ import { map } from 'rxjs/operators';
 export class ServerService {
 
   constructor(private httpClient: HttpClient,
-              private recipeService: RecipeService,
-              private authService: AuthService) { }
+              private recipeService: RecipeService) { }
 
   recipeServers() {
-    // const token = this.authService.getToken();
 
     // return this.httpClient.put('https://my-recipe-app-6e513.firebaseio.com/recipes.json?', this.recipeServe.getRecipes(), {
     //   observe: 'events',
@@ -29,7 +26,6 @@ export class ServerService {
   }
 
   getRecipeServer() {
-    // const token = this.authService.getToken();
 
     this.httpClient.get<Recipe[]>('https://my-recipe-app-6e513.firebaseio.com/recipes.json', {
       observe: 'body',
