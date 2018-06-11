@@ -17,7 +17,7 @@ export class ServerService {
               private authService: AuthService) { }
 
   recipeServers() {
-    const token = this.authService.getToken();
+    // const token = this.authService.getToken();
 
     // return this.httpClient.put('https://my-recipe-app-6e513.firebaseio.com/recipes.json?', this.recipeServe.getRecipes(), {
     //   observe: 'events',
@@ -29,11 +29,15 @@ export class ServerService {
   }
 
   getRecipeServer() {
-    const token = this.authService.getToken();
+    // const token = this.authService.getToken();
 
-    this.httpClient.get<Recipe[]>('https://my-recipe-app-6e513.firebaseio.com/recipes.json?auth=' + token)
+    this.httpClient.get<Recipe[]>('https://my-recipe-app-6e513.firebaseio.com/recipes.json', {
+      observe: 'body',
+      responseType: 'json'
+    })
     .pipe(map(
       (recipes) => {
+        console.log(recipes);
         for (let recipe of recipes) {
           if (!recipe['ingredients']) {
             recipe['ingredients'] = [];
