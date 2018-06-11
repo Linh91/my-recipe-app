@@ -1,12 +1,12 @@
 import { SigninComponent } from './signin/signin.component';
-import { SighupComponent } from './sighup/sighup.component';
+import { SignupComponent } from './signup/signup.component';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const authRoutes: Routes = [
-  { path: 'signup', component: SighupComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent }
 ];
 

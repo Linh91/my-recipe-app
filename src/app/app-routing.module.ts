@@ -1,6 +1,6 @@
 import { HomeComponent } from './core/home/home.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { SighupComponent } from './auth/sighup/sighup.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 import { AppComponent } from './app.component';

@@ -1,7 +1,7 @@
 import { LoggingInterceptor } from './../shared/logging.interceptor';
 import { AuthInterceptor } from './../shared/auth.interceptor';
 import { AppRoutingModule } from './../app-routing.module';
-import { AuthService } from './../auth.service';
+import { AuthService } from '../auth/auth.service';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
