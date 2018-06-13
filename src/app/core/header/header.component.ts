@@ -24,12 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSave() {
-    this.serverService.recipeServers()
-    .subscribe(
-      (response) => {
-        console.log(response);
-      }
-    );
+    this.store.dispatch(new RecipeActions.StoreRecipe());
   }
 
   onFetch() {

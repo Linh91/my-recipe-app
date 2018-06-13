@@ -25,27 +25,27 @@ export class ServerService {
     return this.httpClient.request(req);
   }
 
-  getRecipeServer() {
+  // getRecipeServer() {
 
-    this.httpClient.get<Recipe[]>('https://my-recipe-app-6e513.firebaseio.com/recipes.json', {
-      observe: 'body',
-      responseType: 'json'
-    })
-    .pipe(map(
-      (recipes) => {
-        console.log(recipes);
-        for (let recipe of recipes) {
-          if (!recipe['ingredients']) {
-            recipe['ingredients'] = [];
-          }
-        }
-        return recipes;
-      }
-    ))
-    .subscribe(
-      (recipes: Recipe[]) => {
-        this.recipeService.setRecipe(recipes);
-      }
-    );
-  }
+  //   this.httpClient.get<Recipe[]>('https://my-recipe-app-6e513.firebaseio.com/recipes.json', {
+  //     observe: 'body',
+  //     responseType: 'json'
+  //   })
+  //   .pipe(map(
+  //     (recipes) => {
+  //       console.log(recipes);
+  //       for (let recipe of recipes) {
+  //         if (!recipe['ingredients']) {
+  //           recipe['ingredients'] = [];
+  //         }
+  //       }
+  //       return recipes;
+  //     }
+  //   ))
+  //   .subscribe(
+  //     (recipes: Recipe[]) => {
+  //       this.recipeService.setRecipe(recipes);
+  //     }
+  //   );
+  // }
 }
