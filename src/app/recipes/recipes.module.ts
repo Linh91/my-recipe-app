@@ -6,17 +6,20 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeComponent } from './recipes.component';
+import { recipeReducer } from 'src/app/recipes/store/recipe.reducers';
 
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RecipesRoutingModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature('recipes', recipeReducer)
   ],
   declarations: [
     RecipeComponent,
