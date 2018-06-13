@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { AddIngredients, DeleteIngredient } from './../../shopping-list/store/shopping-list.action';
 import { Recipe } from './../recipe.model';
 import { RecipeService } from './../recipe.service';
-import * as fromApp from '../../store/app.reducers';
 import * as fromRecipe from '../store/recipe.reducers';
 import * as RecipeActions from './../store/recipe.actions';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.action';
