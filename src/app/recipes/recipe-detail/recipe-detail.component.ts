@@ -4,12 +4,13 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { AddIngredients } from './../../shopping-list/store/shopping-list.action';
+import { AddIngredients, DeleteIngredient } from './../../shopping-list/store/shopping-list.action';
 import { Recipe } from './../recipe.model';
 import { RecipeService } from './../recipe.service';
-import * as ShoppingListActions from '../../shopping-list/store/shopping-list.action';
 import * as fromApp from '../../store/app.reducers';
 import * as fromRecipe from '../store/recipe.reducers';
+import * as RecipeActions from './../store/recipe.actions';
+import * as ShoppingListActions from '../../shopping-list/store/shopping-list.action';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -52,7 +53,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onDeleteRecipe() {
     console.log(this.id);
-    this.recipeService.deleteRecipe(this.id);
+    this.store.dispatch(new RecipeActions.DeleteRecipe(this.id));
     this.router.navigate(['/recipes'], {relativeTo: this.route});
   }
 }

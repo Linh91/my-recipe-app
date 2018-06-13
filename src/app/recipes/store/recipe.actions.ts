@@ -25,10 +25,10 @@ export class UpdateRecipes implements Action {
     constructor(public payload: {index: number, updateRecipe: Recipe}) {}
 }
 
-export class DeleteRecipes implements Action {
+export class DeleteRecipe implements Action {
     readonly type = DELETE_RECIPE;
 
-    constructor(public payload: {index: number}) {}
+    constructor(public payload: number) {}
 }
 
-export type RecipeActions = SetRecipes | AddRecipes | UpdateRecipes | DeleteRecipes;
+export type RecipeActions = SetRecipes | AddRecipes | UpdateRecipes | DeleteRecipe;
