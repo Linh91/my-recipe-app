@@ -32,7 +32,7 @@ const initialState: State = {
 
 export function recipeReducer(state = initialState, action: RecipeActions.RecipeActions) {
     switch (action.type) {
-        case (RecipeActions.SET_RECIPE):
+        case (RecipeActions.SET_RECIPES):
             return {
                 ...state, // previous state properties
                 recipes: [...action.payload] // action.payload = recipe[]
@@ -56,7 +56,7 @@ export function recipeReducer(state = initialState, action: RecipeActions.Recipe
             };
         case (RecipeActions.DELETE_RECIPE):
             const oldRecipes = [...state.recipes]; // old recipes array
-            oldRecipes.splice(action.payload.index, 1); // removed recipe
+            oldRecipes.splice(action.payload, 1); // removed recipe
             return {
                 ...state,
                 recipes: oldRecipes

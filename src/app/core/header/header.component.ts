@@ -6,7 +6,7 @@ import { ServerService } from './../../servers/server.service';
 import * as fromApp from '../../store/app.reducers';
 import * as fromAuth from '../../auth/store/auth.reducers';
 import * as AuthActions from '../../auth/store/auth.actions';
-
+import * as RecipeActions from './../../recipes/store/recipe.actions';
 
 @Component({
   selector: 'app-header',
@@ -33,7 +33,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onFetch() {
-    this.serverService.getRecipeServer();
+    this.store.dispatch(new RecipeActions.FetchRecipes());
+    console.log('onfetch', this.store.select('recipes'));
   }
 
   onLogout() {
