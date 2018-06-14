@@ -23,7 +23,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'my-app'}),
     HttpClientModule,
     SharedModule,
     ShoppingListModule,
