@@ -1,9 +1,9 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { RecipeService } from './../recipe.service';
 import * as fromRecipe from '../store/recipe.reducers';
 import * as RecipeActions from './../store/recipe.actions';
 
@@ -18,7 +18,6 @@ export class RecipeEditComponent implements OnInit {
   recipeForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService,
               private router: Router,
               private store: Store<fromRecipe.FeatureState>) { }
 
@@ -80,7 +79,7 @@ export class RecipeEditComponent implements OnInit {
 
     if (this.editMode) {
       this.store.select('recipes')
-      .take(1)
+      .pipe(take(1))
       .subscribe((recipeState: fromRecipe.State) => {
         const recipe = recipeState.recipes[this.id];
         recipeName = recipe.name;

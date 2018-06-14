@@ -2,11 +2,11 @@ import { Ingredient } from './../../shared/ingredient.model';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { AddIngredients, DeleteIngredient } from './../../shopping-list/store/shopping-list.action';
 import { Recipe } from './../recipe.model';
-import { RecipeService } from './../recipe.service';
 import * as fromRecipe from '../store/recipe.reducers';
 import * as RecipeActions from './../store/recipe.actions';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.action';
@@ -20,8 +20,7 @@ export class RecipeDetailComponent implements OnInit {
   recipeState: Observable<fromRecipe.State>;
   id: number;
 
-  constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private router: Router,
               private store: Store<fromRecipe.FeatureState>) { }
 
@@ -37,7 +36,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onAddShoppingList() {
     this.store.select('recipes') // select slice
-    .take(1)
+    .pipe(take(1))
     .subscribe((recipeState: fromRecipe.State) => { // get recipeState
       console.log('click ingredients', recipeState.recipes[this.id].ingredients[0].name);
       this.store.dispatch(new ShoppingListActions.AddIngredients(

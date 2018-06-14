@@ -1,10 +1,11 @@
 import { Actions, Effect } from '@ngrx/effects';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/withLatestFrom';
+// import 'rxjs/add/operator/switchMap';
+// import 'rxjs/add/operator/withLatestFrom';
+
+import { switchMap, withLatestFrom, map } from 'rxjs/operators';
 
 import { Recipe } from './../recipe.model';
 import * as RecipeActions from './recipe.actions';
@@ -17,13 +18,12 @@ export class RecipeEffects {
     @Effect()
     recipeFetch = this.actions$
         .ofType(RecipeActions.FETCH_RECIPES)
-        .switchMap((action: RecipeActions.FetchRecipes) => {
+        .pipe(switchMap((action: RecipeActions.FetchRecipes) => {
             return this.httpClient.get<Recipe[]>('https://my-recipe-app-6e513.firebaseio.com/recipes.json', {
                 observe: 'body',
                 responseType: 'json'
               });
-        })
-        .map(
+        }), map(
             (recipes) => {
               console.log('recipe effect', recipes);
               for (let recipe of recipes) {
@@ -36,17 +36,18 @@ export class RecipeEffects {
                   payload: recipes
               };
             }
-          );
+          ));
 
     @Effect({dispatch: false}) // dont want to do anything after this effect
     recipeStore = this.actions$
         .ofType(RecipeActions.STORE_RECIPE) // if it is the case there is store recipe then
-        .withLatestFrom(this.store.select('recipes')) // slice which returns an observable
-        .switchMap(([action, state]) => { // combing oftype (action) and withlatestfrom (state)
-            const req = new HttpRequest('PUT', 'https://my-recipe-app-6e513.firebaseio.com/recipes.json',
+        .pipe(withLatestFrom(this.store.select('recipes')),
+            switchMap(([action, state]) => { // combing oftype (action) and withlatestfrom (state)
+            // tslint:disable-next-line:max-line-length
+            const req = new HttpRequest('PUT', 'https://my-recipe-app-6e513.firebaseio.com/recipes.json', // slice which returns an observable
             state.recipes, {reportProgress: true}); // accessing recipe through state instead of service
             return this.httpClient.request(req);
-        });
+        }));
 
     constructor(private actions$: Actions,
                 private httpClient: HttpClient,

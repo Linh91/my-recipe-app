@@ -27,7 +27,7 @@ const initialState: State = {
                       new Ingredient('Eggs', 4),
                       new Ingredient('Rice', 50)
                     ]),
-        new Recipe('Apple pie',
+                     new Recipe('Apple pie',
                     'Apple pie dinner dessert',
                     // tslint:disable-next-line:max-line-length
                     'https://img1.southernliving.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2017/10/main/arkansas_black_apple_pie_with_caramel_sauce_2540501_pieso_675.jpg?itok=1W3BMSQM',
@@ -35,6 +35,7 @@ const initialState: State = {
                         new Ingredient('Apples', 10),
                         new Ingredient('Crust', 2)
                     ])
+                ]
 };
 
 export function recipeReducer(state = initialState, action: RecipeActions.RecipeActions) {
