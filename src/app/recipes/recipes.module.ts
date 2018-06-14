@@ -6,7 +6,7 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeComponent } from './recipes.component';
-import { recipeReducer } from 'src/app/recipes/store/recipe.reducers';
+import { recipeReducer } from './store/recipe.reducers';
 
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
