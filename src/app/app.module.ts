@@ -1,6 +1,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DropdownDirective } from './shared/dropdown.directive';
 import { CoreModule } from './core/core.module';
 import { EffectsModule } from '@ngrx/effects';
@@ -24,6 +25,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
   imports: [
     AppRoutingModule,
     BrowserModule.withServerTransition({appId: 'my-app'}),
+    BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
     ShoppingListModule,
